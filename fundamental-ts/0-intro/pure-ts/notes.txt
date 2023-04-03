@@ -1,0 +1,21 @@
+// How to set up projects? 
+// initialize node -> $ npm init --y 
+// initialize tsconfig -> $ tsc --init 
+
+// TypeScript config file 
+// allows us to configure everything typescript related 
+// we can customize our build with specific commands 
+
+// $ mkdir dist src 
+// dist -> "Distribution" is what serves the end user for production (index.html, index.js are automatically created)
+// src -> place where we write our code in TS
+
+// tsconfig.json 
+// set outdir (output directory) to "./dist"
+
+// src/index.ts 
+// write code
+// compile ts into js -> $ tsc index.js
+
+// Command Line 
+// $ tsc -watch -> watch mode for TypeScript
