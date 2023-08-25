@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test Sidebar component creates a snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      <a
+        href="/test"
+        role="navigation"
+      >
+        test
+      </a>
+    </div>
+  </div>
+</DocumentFragment>
+`;
