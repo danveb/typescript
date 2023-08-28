@@ -1,10 +1,10 @@
 import './App.css';
-import { Counter } from './Counter';
+import { ReduxCounter } from './ReduxCounter';
 
 function App() {
   return (
     <div className="App">
-      <Counter />
+      <ReduxCounter />
     </div>
   );
 }
