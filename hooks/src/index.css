@@ -1,0 +1,7 @@
+body {
+  margin: auto; 
+  max-width: 800px; 
+  padding: 1rem; 
+  font-size: x-large; 
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
