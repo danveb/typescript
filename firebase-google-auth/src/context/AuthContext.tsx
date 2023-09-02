@@ -1,9 +1,9 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from "react"; 
-import { User, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth"; 
+import { User, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, UserCredential } from "firebase/auth"; 
 import { auth } from "../firebase";
 
 export interface AuthContextProps {
-  googleSignIn: () => Promise<void>; 
+  googleSignIn: () => Promise<UserCredential>; 
   logOut: () => Promise<void>; 
   user: User | null; 
 }
@@ -30,26 +30,39 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     }; 
   }, []);
   
+  // handle login with context API
   // googleSignIn
-  const googleSignIn = async () => {
-    try {
-      const provider = new GoogleAuthProvider(); 
-      const userResponse = await signInWithPopup(auth, provider); 
-      console.log(userResponse); 
-    } catch(error) {
-      console.log(error); 
-    }
+  // const googleSignIn = async () => {
+  //   try {
+  //     const provider = new GoogleAuthProvider(); 
+  //     const userResponse = await signInWithPopup(auth, provider); 
+  //     console.log(userResponse); 
+  //     // localStorage.setItem("user", JSON.stringify())
+  //   } catch(error) {
+  //     console.log(error); 
+  //   }
+  // }
+
+  // // logOut
+  // const logOut = async () => {
+  //   try {
+  //     localStorage.clear(); 
+  //     setUser(null); 
+  //     await signOut(auth); 
+  //     console.log("User logged out"); 
+  //   } catch(error) {
+  //     console.log(error); 
+  //   }
+  // }
+
+  // handle logic on Home
+  const googleSignIn = () => {
+    const provider = new GoogleAuthProvider(); 
+    return signInWithPopup(auth, provider); 
   }
 
-  // logOut
-  const logOut = async () => {
-    try {
-      setUser(null); 
-      await signOut(auth); 
-      console.log("User logged out"); 
-    } catch(error) {
-      console.log(error); 
-    }
+  const logOut = () => {
+    return signOut(auth); 
   }
 
   return (

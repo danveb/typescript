@@ -1,0 +1,37 @@
+.login {
+  height: 100vh; 
+  width: 100%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.login__form {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column; 
+  gap: 15px; 
+}
+
+.login label, 
+.login input {
+  padding: 10px; 
+  width: 100%; 
+  border: 1px solid transparent; 
+  transition: border-color 0.2s;
+}
+
+.login input::placeholder {
+  color: lightgray; 
+  font-size: 14px; 
+}
+
+.login input:hover {
+  border-color: #646cff;
+}
+
+.login input:focus,
+.login input:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
