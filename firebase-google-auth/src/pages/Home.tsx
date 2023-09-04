@@ -30,9 +30,10 @@ export default function Home() {
 
   return (
     <div className="home">
-      {user?.displayName ? (
+      {/* when registering, by default user will not have displayName, hence we can just stick with email for now... */}
+      {user?.email ? (
         <>
-          <h1>Hello {user.displayName}</h1>
+          <h1>Hello {user.email}</h1>
           <button onClick={handleLogOut}>Log out</button>
         </>
       ) : (

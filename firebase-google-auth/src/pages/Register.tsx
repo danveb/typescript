@@ -1,7 +1,15 @@
+import { UserAuth } from "../context/AuthContext";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/Register.css"; 
 
 export default function Register() {
+  // UserAuth 
+  const { signUpWithUserPassword } = UserAuth(); 
+
+  // useNavigate
+  const navigate = useNavigate(); 
+
   // useState 
   const [formData, setFormData] = useState({
     email: "", 
@@ -20,11 +28,20 @@ export default function Register() {
   }
 
   // handleSubmit 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); 
     console.log("Submitting"); 
-    // handle form submission to firebase 
-    // ...
+    // handle form submission to firestore 
+    // use destructured email, password and signUpWithUserPassword
+    try {
+      await signUpWithUserPassword(email, password); 
+      navigate("/"); 
+      // already recorded on simple-auth
+      // pending to save new user to firestore db
+      // ...
+    } catch(error) {
+      console.log(error); 
+    }
   }
 
   return (

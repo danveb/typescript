@@ -1,7 +1,15 @@
-import React, { useState } from "react";
+import { UserAuth } from "../context/AuthContext";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/Login.css"; 
 
 export default function Login() {
+  // UserAuth
+  const { user, loginWithEmailAndPassword } = UserAuth(); 
+
+  // useNavigate
+  const navigate = useNavigate(); 
+
   // useState 
   const [formData, setFormData] = useState({
     email: "", 
@@ -20,12 +28,24 @@ export default function Login() {
   }
 
   // handleSubmit 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); 
     console.log("Submitting"); 
-    // handle form submission to firebase 
-    // ...
+    // handle form submission to firestore 
+    // use destructured email, password and run loginWithEmailAndPassword 
+    try {
+      await loginWithEmailAndPassword(email, password); 
+      navigate("/"); 
+    } catch(error) {
+      console.log(error); 
+    }
   }
+
+  // useEffect
+  useEffect(() => {
+    // checks if user's email is test@test.com for testing purpose
+    if(user?.email === "test@test.com") navigate("/"); 
+  }, [navigate, user]);
 
   return (
     <div className="register">
