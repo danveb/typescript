@@ -29,8 +29,8 @@
 //   countHistory: T[]; 
 // }
 
-// export default function GenericsButton<T>({ countValue, countHistory }: ButtonProps<T>) {
-//   return (
-//     <button>Click me</button>
-//   )
-// }
+export default function GenericsButton<T>({ countValue, countHistory }: ButtonProps<T>) {
+  return (
+    <button>Click me</button>
+  )
+}
