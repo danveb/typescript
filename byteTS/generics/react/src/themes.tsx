@@ -1,6 +1,5 @@
 import { ReactNode, useState } from "react"; 
 
-
 export default function Themes() {
   // useState 
   const [selectedTheme, setSelectedTheme] = useState("light"); 
